@@ -560,7 +560,17 @@ public class ConferenceApi {
 
         return query.list();
     }
-    
+     @ApiMethod(
+            name = "queryConferences_nofilters",
+            path = "queryConferences_nofilters",
+            httpMethod = HttpMethod.POST
+    )
+    public List<Conference> queryConferences_nofilters() {
+        // Find all entities of type Conference
+        Query<Conference> query = ofy().load().type(Conference.class).order("name");
+
+        return query.list();
+    }
      @ApiMethod(name="getAnnouncement",path="announcement", httpMethod = HttpMethod.GET) 
         public Announcement getAnnouncement(){ 
         MemcacheService memcacheService = MemcacheServiceFactory.getMemcacheService(); 
